@@ -13,7 +13,7 @@ def main():
         width, height = im.size
         quality = int(101 - ((width * height) * 3) / file_size)
 
-        if height >= 1200 > width and quality >= 80:
+        if quality >= 80:
             out_dir = in_dir / 'GoodQty'
         else:
             out_dir = in_dir / 'BadQty'
