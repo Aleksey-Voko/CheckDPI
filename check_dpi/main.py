@@ -14,9 +14,9 @@ def main():
         quality = int(101 - ((width * height) * 3) / file_size)
 
         if quality >= 80:
-            out_dir = in_dir / 'GoodQty'
+            out_dir = in_dir / 'PerfectQty'
         else:
-            out_dir = in_dir / 'BadQty'
+            out_dir = in_dir / 'GoodQty'
 
         out_path = out_dir / in_path.name
         out_dir.mkdir(parents=True, exist_ok=True)
