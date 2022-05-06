@@ -4,17 +4,28 @@ from PIL import Image
 
 
 def main():
-    # MIN_DPI = input('Задать минимальный высокий DPI: ')
+    images = Path().glob('*.jpg')
+    for in_path in images:
+        in_dir = in_path.parent
 
-    images = Path().rglob('*.jpg')
-    for image in images:
-        im = Image.open(image)
-        print(image)
-        print(im.format, im.size, im.mode)
-        print(im.info)
-        print()
+        im = Image.open(in_path)
+        file_size = in_path.stat().st_size
+        width, height = im.size
+        quality = int(101 - ((width * height) * 3) / file_size)
 
-    # print('Сортировка завершена')
+        if height >= 1200 > width and quality >= 80:
+            out_dir = in_dir / 'GoodQty'
+        else:
+            out_dir = in_dir / 'BadQty'
+
+        out_path = out_dir / in_path.name
+        out_dir.mkdir(parents=True, exist_ok=True)
+        print(out_path)
+        out_path.write_bytes(in_path.read_bytes())
+
+    print()
+    print('=' * 28)
+    print('Сортировка завершена')
     print('Для выхода нажмите Enter')
     input()
 
