@@ -13,10 +13,10 @@ def main():
         width, height = im.size
         quality = int(101 - ((width * height) * 3) / file_size)
 
-        if quality >= 80:
-            out_dir = in_dir / 'PerfectQty'
-        else:
+        if quality >= 60:
             out_dir = in_dir / 'GoodQty'
+        else:
+            out_dir = in_dir / 'BadQty'
 
         out_path = out_dir / in_path.name
         out_dir.mkdir(parents=True, exist_ok=True)
