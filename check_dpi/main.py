@@ -23,6 +23,8 @@ def main():
         print(out_path)
         out_path.write_bytes(in_path.read_bytes())
 
+
+        
     print()
     print('=' * 28)
     print('Сортировка завершена')
